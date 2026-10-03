@@ -41,11 +41,14 @@ func (p *CSPPolicy) BlocksInlineScript() bool {
 	if p == nil {
 		return false
 	}
-	sources, hasScriptSrc := p.Directives["script-src"]
+	sources, hasScriptSrc := p.Directives["script-src-elem"]
 	if !hasScriptSrc {
-		sources, hasScriptSrc = p.Directives["default-src"]
+		sources, hasScriptSrc = p.Directives["script-src"]
 		if !hasScriptSrc {
-			return false
+			sources, hasScriptSrc = p.Directives["default-src"]
+			if !hasScriptSrc {
+				return false
+			}
 		}
 	}
 
@@ -60,18 +63,22 @@ func (p *CSPPolicy) BlocksInlineScript() bool {
 	// Check if 'unsafe-inline' is present
 	hasUnsafeInline := false
 	hasNonceOrHash := false
+	hasStrictDynamic := false
 	for _, s := range sources {
 		lower := strings.ToLower(s)
 		if lower == "'unsafe-inline'" {
 			hasUnsafeInline = true
+		}
+		if lower == "'strict-dynamic'" {
+			hasStrictDynamic = true
 		}
 		if strings.HasPrefix(lower, "'nonce-") || strings.HasPrefix(lower, "'sha256-") || strings.HasPrefix(lower, "'sha384-") || strings.HasPrefix(lower, "'sha512-") {
 			hasNonceOrHash = true
 		}
 	}
 
-	// In modern browsers, if nonces or hashes are present, 'unsafe-inline' is ignored
-	if hasNonceOrHash {
+	// In modern browsers, if nonces, hashes, or strict-dynamic are present, 'unsafe-inline' is ignored
+	if hasNonceOrHash || hasStrictDynamic {
 		return true
 	}
 	if !hasUnsafeInline {

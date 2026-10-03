@@ -24,7 +24,11 @@ func NewPool(maxConcurrency int) *Pool {
 
 // GetThrottler returns or creates a HostThrottler for the given URL's host.
 func (p *Pool) GetThrottler(rawURL string) *HostThrottler {
-	u, err := url.Parse(rawURL)
+	targetURL := strings.TrimSpace(rawURL)
+	if !strings.HasPrefix(targetURL, "http://") && !strings.HasPrefix(targetURL, "https://") {
+		targetURL = "http://" + targetURL
+	}
+	u, err := url.Parse(targetURL)
 	host := rawURL
 	if err == nil && u.Host != "" {
 		host = u.Host

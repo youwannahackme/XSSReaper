@@ -32,18 +32,42 @@ func DetectEncoding(baseCanary, probeCanary, reflected string) models.EncodingTy
 	if strings.Contains(reflected, probeCanary) {
 		return models.EncodingNone
 	}
-	if !strings.Contains(reflected, baseCanary) {
+	idx := strings.Index(reflected, baseCanary)
+	if idx == -1 {
 		return models.EncodingStripped
 	}
-	// Base canary is present, check how the probe suffix (<>"') was encoded
-	if strings.Contains(reflected, html.EscapeString(probeCanary)) || strings.Contains(reflected, "&lt;") || strings.Contains(reflected, "&#34;") {
+
+	after := reflected[idx+len(baseCanary):]
+	if len(after) > 64 {
+		after = after[:64]
+	}
+
+	// Check if probe suffix (<>"' or <>") is present unencoded
+	if strings.HasPrefix(after, `<>"'`) || strings.HasPrefix(after, `<>"`) {
+		return models.EncodingNone
+	}
+
+	// HTML Entity encoding check
+	if strings.HasPrefix(after, "&lt;") || strings.HasPrefix(after, "&#60;") || strings.HasPrefix(after, "&#x3c;") ||
+		strings.HasPrefix(after, "&#x3C;") || strings.HasPrefix(after, "&quot;") || strings.HasPrefix(after, "&#34;") ||
+		strings.HasPrefix(after, "&#39;") || strings.HasPrefix(after, "&amp;") ||
+		strings.Contains(reflected, html.EscapeString(probeCanary)) {
 		return models.EncodingHTMLEnt
 	}
-	if strings.Contains(reflected, url.QueryEscape(probeCanary)) || strings.Contains(reflected, "%3C") || strings.Contains(reflected, "%3c") {
+
+	// URL Encoding check
+	if strings.HasPrefix(after, "%3C") || strings.HasPrefix(after, "%3c") ||
+		strings.HasPrefix(after, "%22") || strings.HasPrefix(after, "%27") ||
+		strings.Contains(reflected, url.QueryEscape(probeCanary)) {
 		return models.EncodingURLEnc
 	}
-	if strings.Contains(reflected, `\`+baseCanary) || strings.Contains(reflected, `\"`) || strings.Contains(reflected, `\x3c`) || strings.Contains(reflected, `\u003c`) {
+
+	// JS / Unicode / Hex escaping check
+	if strings.HasPrefix(after, `\"`) || strings.HasPrefix(after, `\'`) || strings.HasPrefix(after, `\x3c`) ||
+		strings.HasPrefix(after, `\x3C`) || strings.HasPrefix(after, `\u003c`) || strings.HasPrefix(after, `\u003C`) ||
+		strings.HasPrefix(after, `\`) {
 		return models.EncodingJSEsc
 	}
+
 	return models.EncodingStripped
 }

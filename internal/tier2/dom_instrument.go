@@ -20,7 +20,9 @@ type DOMSinkHit struct {
 
 // InstrumentDOM checks whether navigating to targetURL with canary triggers any dangerous DOM sinks.
 func InstrumentDOM(ctx context.Context, targetURL string, canary string) ([]DOMSinkHit, error) {
-	browser.Acquire()
+	if err := browser.AcquireWithContext(ctx); err != nil {
+		return nil, err
+	}
 	defer browser.Release()
 
 	opts := browser.AllocatorOptions()
@@ -73,6 +75,7 @@ func PromoteIfDOMSink(ctx context.Context, finding *models.Finding, canary strin
 		finding.DOMSink = &sinkName
 		finding.Confidence = models.ConfidenceDOMSink
 		finding.Context = models.ContextDOMSink
+		finding.TargetURL = testURL
 		if len(hits[0].Value) > 0 && len(finding.Evidence) == 0 {
 			finding.Evidence = hits[0].Value
 		}
@@ -152,6 +155,31 @@ func buildSinkHookScript(canary string) string {
 				if (typeof fn === 'string') checkSink('setInterval', fn);
 				return origInterval.apply(this, [fn, ...args]);
 			};
+
+			// Hook insertAdjacentHTML
+			if (Element.prototype.insertAdjacentHTML) {
+				const origInsertAdjacentHTML = Element.prototype.insertAdjacentHTML;
+				Element.prototype.insertAdjacentHTML = function(pos, val) {
+					checkSink('insertAdjacentHTML', String(val));
+					return origInsertAdjacentHTML.call(this, pos, val);
+				};
+			}
+
+			// Hook srcdoc on iframe elements
+			try {
+				if (window.HTMLIFrameElement && HTMLIFrameElement.prototype) {
+					const srcdocDesc = Object.getOwnPropertyDescriptor(HTMLIFrameElement.prototype, 'srcdoc');
+					if (srcdocDesc && srcdocDesc.set) {
+						const origSrcdocSet = srcdocDesc.set;
+						Object.defineProperty(HTMLIFrameElement.prototype, 'srcdoc', {
+							set: function(val) {
+								checkSink('srcdoc', String(val));
+								return origSrcdocSet.call(this, val);
+							}
+						});
+					}
+				}
+			} catch(e) {}
 		})();
 	`, canary)
 }

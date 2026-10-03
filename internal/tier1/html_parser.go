@@ -2,6 +2,7 @@ package tier1
 
 import (
 	"bytes"
+	"regexp"
 	"strings"
 
 	"golang.org/x/net/html"
@@ -38,7 +39,9 @@ func ParseReflections(htmlBody []byte, baseCanary, probeCanary string) []Reflect
 		switch tt {
 		case html.StartTagToken, html.SelfClosingTagToken:
 			if strings.EqualFold(token.Data, "script") {
-				inScript = true
+				if tt == html.StartTagToken {
+					inScript = true
+				}
 				scriptType = ""
 				scriptID = ""
 				for _, attr := range token.Attr {
@@ -50,7 +53,9 @@ func ParseReflections(htmlBody []byte, baseCanary, probeCanary string) []Reflect
 					}
 				}
 			} else if strings.EqualFold(token.Data, "style") {
-				inStyle = true
+				if tt == html.StartTagToken {
+					inStyle = true
+				}
 			}
 
 			// Check attributes for canary using raw string for accurate encoding check
@@ -114,23 +119,21 @@ func classifyAttributeContext(_, attrKey, rawTag, _ string) models.ContextType {
 		return models.ContextURLContext
 	}
 
-	idx := strings.Index(strings.ToLower(rawTag), lowerKey)
-	if idx != -1 {
-		eqIdx := strings.IndexByte(rawTag[idx:], '=')
-		if eqIdx != -1 {
-			rem := strings.TrimSpace(rawTag[idx+eqIdx+1:])
-			if len(rem) > 0 {
-				switch rem[0] {
-				case '"':
-					return models.ContextAttrDouble
-				case '\'':
-					return models.ContextAttrSingle
-				default:
-					return models.ContextAttrUnquoted
-				}
-			}
+	// Match attrKey as an independent attribute key followed by '=' and optional quote
+	pattern := regexp.MustCompile(`(?i)(?:^|[\s/])` + regexp.QuoteMeta(attrKey) + `\s*=\s*(["']?)`)
+	matches := pattern.FindStringSubmatch(rawTag)
+	if len(matches) > 1 {
+		quote := matches[1]
+		switch quote {
+		case `"`:
+			return models.ContextAttrDouble
+		case `'`:
+			return models.ContextAttrSingle
+		case "":
+			return models.ContextAttrUnquoted
 		}
 	}
+
 	return models.ContextAttrDouble
 }
 

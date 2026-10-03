@@ -41,9 +41,11 @@ func (ht *HostThrottler) Acquire(ctx context.Context) error {
 	ht.mu.Unlock()
 
 	if delay > 0 {
+		timer := time.NewTimer(delay)
 		select {
-		case <-time.After(delay):
+		case <-timer.C:
 		case <-ctx.Done():
+			timer.Stop()
 			return ctx.Err()
 		}
 	}
@@ -51,24 +53,23 @@ func (ht *HostThrottler) Acquire(ctx context.Context) error {
 	ht.mu.Lock()
 	defer ht.mu.Unlock()
 
+	done := make(chan struct{})
+	defer close(done)
+	go func() {
+		select {
+		case <-ctx.Done():
+			ht.mu.Lock()
+			ht.cond.Broadcast()
+			ht.mu.Unlock()
+		case <-done:
+		}
+	}()
+
 	for ht.activeRequests >= ht.currentConcurrency {
-		// Check context before waiting
 		if err := ctx.Err(); err != nil {
 			return err
 		}
-		// Wait with context awareness
-		done := make(chan struct{})
-		go func() {
-			select {
-			case <-ctx.Done():
-				ht.mu.Lock()
-				ht.cond.Broadcast()
-				ht.mu.Unlock()
-			case <-done:
-			}
-		}()
 		ht.cond.Wait()
-		close(done)
 		if err := ctx.Err(); err != nil {
 			return err
 		}
@@ -88,6 +89,10 @@ func (ht *HostThrottler) Release() {
 
 // Observe records the outcome of an HTTP request and adapts concurrency and backoff accordingly.
 func (ht *HostThrottler) Observe(statusCode int, err error) {
+	if err == context.Canceled {
+		return
+	}
+
 	ht.mu.Lock()
 	defer ht.mu.Unlock()
 

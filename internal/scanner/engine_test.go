@@ -68,3 +68,40 @@ func TestEngineScanTargetsAgainstFixtures(t *testing.T) {
 		t.Errorf("expected /json to be Potential, got %v (ok=%v)", conf, ok)
 	}
 }
+
+func TestEngineMultiParamDOMScan(t *testing.T) {
+	srv := fixtures.NewServer()
+	defer srv.Close()
+
+	cfg := Config{
+		Concurrency: 2,
+		Timeout:     5 * time.Second,
+		Confirm:     true,
+		DOM:         true,
+	}
+
+	engine := NewEngine(cfg)
+	ctx := context.Background()
+
+	// Target URL has an extra param "safe" and the DOM sink param "q"
+	urls := []string{
+		srv.URL() + "/dom-innerhtml?safe=static&q=test",
+	}
+
+	findings, err := engine.ScanTargets(ctx, urls)
+	if err != nil {
+		t.Fatalf("ScanTargets failed: %v", err)
+	}
+
+	foundDOM := false
+	for _, f := range findings {
+		if f.ParamName == "q" && (f.Confidence == models.ConfidenceConfirmed || f.Confidence == models.ConfidenceDOMSink) {
+			foundDOM = true
+			break
+		}
+	}
+
+	if !foundDOM {
+		t.Fatalf("expected param 'q' to be detected as DOM sink / Confirmed in multi-param URL, findings: %+v", findings)
+	}
+}

@@ -34,16 +34,15 @@ func ConfirmExecution(ctx context.Context, finding *models.Finding, respectCSP b
 
 	nonce := tier1.GenerateCanary()
 	testPayloads := payloads.GetPayloadsForContext(finding.Context, nonce, oobURL)
-	if allPayloads || (len(customPayloads) > 0 && len(customPayloads[0]) > 0) {
-		var listToUse []string
-		for _, pSlice := range customPayloads {
-			listToUse = append(listToUse, pSlice...)
-		}
-		if len(listToUse) == 0 && allPayloads {
-			listToUse = payloads.GetDefaultPayloadList()
-		}
-		for _, p := range listToUse {
+	if allPayloads {
+		for _, p := range payloads.GetDefaultPayloadList() {
 			testPayloads = append(testPayloads, payloads.AdaptPayloadForNonce(p, nonce))
+		}
+	} else if len(customPayloads) > 0 && len(customPayloads[0]) > 0 {
+		for _, pSlice := range customPayloads {
+			for _, p := range pSlice {
+				testPayloads = append(testPayloads, payloads.AdaptPayloadForNonce(p, nonce))
+			}
 		}
 	}
 
@@ -78,7 +77,6 @@ func ConfirmExecution(ctx context.Context, finding *models.Finding, respectCSP b
 			fmt.Fprintf(os.Stdout, "\x1b[32;1m[✓] Vulnerable:\x1b[0m \x1b[32;1m%s   - Payload: %s (Context: %s)\x1b[0m\n", finding.TargetURL, finding.PayloadUsed, finding.Context)
 			continue
 		}
-		fmt.Fprintf(os.Stdout, "\x1b[31;1m[X]\x1b[0m \x1b[36mNot Vulnerable:\x1b[0m \x1b[31m%s\x1b[0m\n", testURL.String())
 	}
 
 	// Rule 5: Anything that reached Tier 3 but didn't trigger the nonce stays Potential / DOM-Sink
@@ -92,7 +90,9 @@ func ConfirmExecution(ctx context.Context, finding *models.Finding, respectCSP b
 }
 
 func verifyInBrowser(ctx context.Context, targetURL string, nonce string) (bool, error) {
-	browser.Acquire()
+	if err := browser.AcquireWithContext(ctx); err != nil {
+		return false, err
+	}
 	defer browser.Release()
 
 	opts := browser.AllocatorOptions()
@@ -105,6 +105,16 @@ func verifyInBrowser(ctx context.Context, targetURL string, nonce string) (bool,
 
 	navCtx, cancelNav := context.WithTimeout(chromeCtx, 12*time.Second)
 	defer cancelNav()
+
+	var dialogConfirmed bool
+	chromedp.ListenTarget(chromeCtx, func(ev interface{}) {
+		if _, ok := ev.(*page.EventJavascriptDialogOpening); ok {
+			dialogConfirmed = true
+			go func() {
+				_ = chromedp.Run(chromeCtx, page.HandleJavaScriptDialog(true))
+			}()
+		}
+	})
 
 	hookScript := fmt.Sprintf(`
 		(function() {
@@ -150,7 +160,7 @@ func verifyInBrowser(ctx context.Context, targetURL string, nonce string) (bool,
 	if err != nil {
 		return false, err
 	}
-	if confirmed {
+	if confirmed || dialogConfirmed {
 		return true, nil
 	}
 
@@ -161,7 +171,7 @@ func verifyInBrowser(ctx context.Context, targetURL string, nonce string) (bool,
 			chromedp.Sleep(300*time.Millisecond),
 			chromedp.Evaluate(`window.__xss_confirmed === true`, &confirmed),
 		)
-		if confirmed {
+		if confirmed || dialogConfirmed {
 			return true, nil
 		}
 	}

@@ -5,6 +5,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"sort"
 	"strings"
 	"time"
 
@@ -48,8 +49,15 @@ func (a *Analyzer) AnalyzeURL(ctx context.Context, targetURL string) ([]*models.
 
 	var candidates []*models.Finding
 
+	// Sort query parameters for deterministic scan order
+	paramNames := make([]string, 0, len(queryParams))
+	for p := range queryParams {
+		paramNames = append(paramNames, p)
+	}
+	sort.Strings(paramNames)
+
 	// 2. Test each parameter independently
-	for paramName := range queryParams {
+	for _, paramName := range paramNames {
 		baseCanary := GenerateCanary()
 		probeCanary := GenerateProbeCanary(baseCanary)
 
@@ -84,7 +92,7 @@ func (a *Analyzer) AnalyzeURL(ctx context.Context, targetURL string) ([]*models.
 				err = nil
 			}
 		}
-		if err != nil {
+		if err != nil || !strings.Contains(respBody, baseCanary) {
 			continue
 		}
 
@@ -181,7 +189,7 @@ func (a *Analyzer) fetch(ctx context.Context, reqURL string) (string, http.Heade
 		a.OnRequestOutcome(reqURL, resp.StatusCode, nil)
 	}
 
-	bodyBytes, err := io.ReadAll(resp.Body)
+	bodyBytes, err := io.ReadAll(io.LimitReader(resp.Body, 5*1024*1024))
 	if err != nil {
 		return "", nil, err
 	}

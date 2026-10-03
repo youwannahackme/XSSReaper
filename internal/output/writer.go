@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"strings"
 	"text/tabwriter"
 
 	"github.com/youwannahackme/XSSReaper/internal/models"
@@ -15,14 +16,20 @@ type Writer struct {
 	Out           io.Writer
 	Format        string
 	OnlyConfirmed bool
+	NoColor       bool
 }
 
 // NewWriter creates a new output writer.
 func NewWriter(out io.Writer, format string, onlyConfirmed bool) *Writer {
+	noColor := os.Getenv("NO_COLOR") != ""
+	if out != os.Stdout && out != os.Stderr {
+		noColor = true
+	}
 	return &Writer{
 		Out:           out,
 		Format:        format,
 		OnlyConfirmed: onlyConfirmed,
+		NoColor:       noColor,
 	}
 }
 
@@ -49,29 +56,42 @@ func (w *Writer) writeJSON(findings []*models.Finding) error {
 }
 
 func (w *Writer) writeTable(findings []*models.Finding) error {
-	tw := tabwriter.NewWriter(w.Out, 0, 0, 3, ' ', 0)
+	var buf strings.Builder
+	tw := tabwriter.NewWriter(&buf, 0, 0, 3, ' ', 0)
 	fmt.Fprintln(tw, "CONFIDENCE\tPARAM\tCONTEXT\tTARGET\tPAYLOAD")
 	fmt.Fprintln(tw, "----------\t-----\t-------\t------\t-------")
 
 	for _, f := range findings {
-		confStr := string(f.Confidence)
-		// Apply ANSI coloring if stdout is file or terminal
+		var confStr string
 		switch f.Confidence {
 		case models.ConfidenceConfirmed:
-			confStr = "\x1b[32;1mCONFIRMED\x1b[0m"
+			confStr = "CONFIRMED"
 		case models.ConfidenceDOMSink:
-			confStr = "\x1b[33;1mDOM-SINK\x1b[0m"
+			confStr = "DOM-SINK"
 		case models.ConfidenceBlockedByCSP:
-			confStr = "\x1b[35mBLOCKED-CSP\x1b[0m"
+			confStr = "BLOCKED-CSP"
 		default:
-			confStr = "\x1b[36mPOTENTIAL\x1b[0m"
+			confStr = "POTENTIAL"
 		}
 		fmt.Fprintf(tw, "%s\t%s\t%s\t%s\t%s\n", confStr, f.ParamName, f.Context, f.TargetURL, f.PayloadUsed)
 	}
-	return tw.Flush()
+	if err := tw.Flush(); err != nil {
+		return err
+	}
+
+	rendered := buf.String()
+	if !w.NoColor {
+		rendered = strings.ReplaceAll(rendered, "CONFIRMED  ", "\x1b[32;1mCONFIRMED\x1b[0m  ")
+		rendered = strings.ReplaceAll(rendered, "DOM-SINK   ", "\x1b[33;1mDOM-SINK\x1b[0m   ")
+		rendered = strings.ReplaceAll(rendered, "BLOCKED-CSP", "\x1b[35mBLOCKED-CSP\x1b[0m")
+		rendered = strings.ReplaceAll(rendered, "POTENTIAL  ", "\x1b[36mPOTENTIAL\x1b[0m  ")
+	}
+
+	_, err := fmt.Fprint(w.Out, rendered)
+	return err
 }
 
-// WriteToFile writes output report to a specified filepath.
+// WriteToFile writes output report to a specified filepath without ANSI colors.
 func WriteToFile(filepath string, findings []*models.Finding, format string, onlyConfirmed bool) error {
 	file, err := os.Create(filepath)
 	if err != nil {
@@ -79,5 +99,6 @@ func WriteToFile(filepath string, findings []*models.Finding, format string, onl
 	}
 	defer file.Close()
 	w := NewWriter(file, format, onlyConfirmed)
+	w.NoColor = true
 	return w.WriteReport(findings)
 }

@@ -1,8 +1,10 @@
 package browser
 
 import (
+	"context"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"runtime"
 
 	"github.com/chromedp/chromedp"
@@ -12,15 +14,35 @@ var sem = make(chan struct{}, 2)
 
 // Acquire blocks until a browser slot is available.
 func Acquire() {
-	sem <- struct{}{}
+	_ = AcquireWithContext(context.Background())
+}
+
+// AcquireWithContext blocks until a browser slot is available or ctx is cancelled.
+func AcquireWithContext(ctx context.Context) error {
+	if err := ctx.Err(); err != nil {
+		return err
+	}
+	select {
+	case sem <- struct{}{}:
+		if err := ctx.Err(); err != nil {
+			Release()
+			return err
+		}
+		return nil
+	case <-ctx.Done():
+		return ctx.Err()
+	}
 }
 
 // Release frees a browser slot.
 func Release() {
-	<-sem
+	select {
+	case <-sem:
+	default:
+	}
 }
 
-// FindExecPath returns the path to a Chrome or Edge executable on the system.
+// FindExecPath returns the path to a Chrome, Edge, or Brave executable on the system.
 func FindExecPath() string {
 	if path := os.Getenv("CHROME_PATH"); path != "" {
 		if _, err := os.Stat(path); err == nil {
@@ -35,16 +57,30 @@ func FindExecPath() string {
 			`C:\Program Files (x86)\Google\Chrome\Application\chrome.exe`,
 			`C:\Program Files\Microsoft\Edge\Application\msedge.exe`,
 			`C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe`,
-			`C:\Users\`+os.Getenv("USERNAME")+`\AppData\Local\Google\Chrome\Application\chrome.exe`,
 		)
+		if localAppData := os.Getenv("LOCALAPPDATA"); localAppData != "" {
+			candidates = append(candidates,
+				filepath.Join(localAppData, "Google", "Chrome", "Application", "chrome.exe"),
+				filepath.Join(localAppData, "Microsoft", "Edge", "Application", "msedge.exe"),
+				filepath.Join(localAppData, "BraveSoftware", "Brave-Browser", "Application", "brave.exe"),
+			)
+		}
+		if progFiles := os.Getenv("ProgramFiles"); progFiles != "" {
+			candidates = append(candidates,
+				filepath.Join(progFiles, "BraveSoftware", "Brave-Browser", "Application", "brave.exe"),
+			)
+		}
+		candidates = append(candidates, "chrome.exe", "msedge.exe", "brave.exe")
 	} else {
 		candidates = append(candidates,
 			"google-chrome",
 			"google-chrome-stable",
 			"chromium",
 			"chromium-browser",
+			"brave-browser",
 			"/usr/bin/google-chrome",
 			"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+			"/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
 		)
 	}
 

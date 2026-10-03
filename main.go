@@ -14,7 +14,6 @@ import (
 
 	"github.com/youwannahackme/XSSReaper/internal/browser"
 	"github.com/youwannahackme/XSSReaper/internal/output"
-	"github.com/youwannahackme/XSSReaper/internal/payloads"
 	"github.com/youwannahackme/XSSReaper/internal/scanner"
 )
 
@@ -127,9 +126,22 @@ func main() {
 		}
 	}
 
+	normalizeTargetURL := func(raw string) string {
+		raw = strings.TrimSpace(raw)
+		if raw == "" {
+			return ""
+		}
+		if !strings.HasPrefix(raw, "http://") && !strings.HasPrefix(raw, "https://") {
+			raw = "http://" + raw
+		}
+		return raw
+	}
+
 	var targetURLs []string
 	if urlFlag != "" {
-		targetURLs = append(targetURLs, urlFlag)
+		if u := normalizeTargetURL(urlFlag); u != "" {
+			targetURLs = append(targetURLs, u)
+		}
 	}
 	if listFile != "" {
 		f, err := os.Open(listFile)
@@ -141,7 +153,9 @@ func main() {
 		for scanner.Scan() {
 			line := strings.TrimSpace(scanner.Text())
 			if line != "" && !strings.HasPrefix(line, "#") {
-				targetURLs = append(targetURLs, line)
+				if u := normalizeTargetURL(line); u != "" {
+					targetURLs = append(targetURLs, u)
+				}
 			}
 		}
 		if err := scanner.Err(); err != nil {
@@ -179,8 +193,6 @@ func main() {
 			os.Exit(1)
 		}
 		f.Close()
-	} else {
-		payloadsList = payloads.GetDefaultPayloadList()
 	}
 
 	cfg := scanner.Config{
@@ -194,6 +206,7 @@ func main() {
 		RespectCSP:    respectCSPFlag,
 		OnlyConfirmed: onlyConfirmed,
 		Payloads:      payloadsList,
+		Format:        formatFlag,
 	}
 
 	engine := scanner.NewEngine(cfg)

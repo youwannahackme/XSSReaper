@@ -28,6 +28,7 @@ type Config struct {
 	OnlyConfirmed bool
 	AllPayloads   bool
 	Payloads      []string
+	Format        string
 }
 
 // Engine orchestrates the Tier 1 -> Tier 2 -> Tier 3 scanning pipeline across targets.
@@ -91,9 +92,16 @@ func (e *Engine) scanSingleURL(ctx context.Context, targetURL string) ([]*models
 	if err != nil {
 		return nil, err
 	}
-	if len(candidates) == 0 && e.Config.DOM {
+	if e.Config.DOM {
 		if u, parseErr := url.Parse(targetURL); parseErr == nil {
+			testedParams := make(map[string]bool)
+			for _, c := range candidates {
+				testedParams[c.ParamName] = true
+			}
 			for paramName := range u.Query() {
+				if testedParams[paramName] {
+					continue
+				}
 				domCandidate := &models.Finding{
 					TargetURL:      targetURL,
 					InjectionPoint: models.InjectionQueryParam,
@@ -103,7 +111,7 @@ func (e *Engine) scanSingleURL(ctx context.Context, targetURL string) ([]*models
 				}
 				promoted, err := tier2.PromoteIfDOMSink(ctx, domCandidate, tier1.GenerateCanary())
 				if err != nil {
-					slog.Error("DOM sink promotion failed", slog.String("param", paramName), slog.Any("error", err))
+					slog.Debug("DOM sink promotion failed", slog.String("param", paramName), slog.Any("error", err))
 				}
 				if err == nil && promoted != nil && promoted.DOMSink != nil {
 					candidates = append(candidates, promoted)
@@ -112,7 +120,13 @@ func (e *Engine) scanSingleURL(ctx context.Context, targetURL string) ([]*models
 		}
 	}
 	if len(candidates) == 0 {
-		fmt.Fprintf(os.Stdout, "\x1b[31;1m[X]\x1b[0m \x1b[36mNot Vulnerable:\x1b[0m \x1b[31m%s\x1b[0m\n", targetURL)
+		out := os.Stdout
+		if e.Config.Format == "json" {
+			out = os.Stderr
+		}
+		if !e.Config.OnlyConfirmed {
+			fmt.Fprintf(out, "\x1b[31;1m[X]\x1b[0m \x1b[36mNot Vulnerable:\x1b[0m \x1b[31m%s\x1b[0m\n", targetURL)
+		}
 		return nil, nil
 	}
 
@@ -162,23 +176,28 @@ func (e *Engine) printLiveFinding(finding *models.Finding) {
 		return
 	}
 
+	out := os.Stdout
+	if e.Config.Format == "json" {
+		out = os.Stderr
+	}
+
 	switch finding.Confidence {
 	case models.ConfidenceConfirmed:
-		fmt.Fprintf(os.Stdout, "\x1b[32;1m[✓] Vulnerable:\x1b[0m \x1b[32;1m%s   - Payload: %s (Context: %s)\x1b[0m\n", finding.TargetURL, finding.PayloadUsed, finding.Context)
+		fmt.Fprintf(out, "\x1b[32;1m[✓] Vulnerable:\x1b[0m \x1b[32;1m%s   - Payload: %s (Context: %s)\x1b[0m\n", finding.TargetURL, finding.PayloadUsed, finding.Context)
 	case models.ConfidenceDOMSink:
 		sinkName := ""
 		if finding.DOMSink != nil {
 			sinkName = *finding.DOMSink
 		}
-		fmt.Fprintf(os.Stdout, "\x1b[33;1m[✓] DOM-Sink:\x1b[0m \x1b[33;1m%s   - Sink: %s\x1b[0m\n", finding.TargetURL, sinkName)
+		fmt.Fprintf(out, "\x1b[33;1m[✓] DOM-Sink:\x1b[0m \x1b[33;1m%s   - Sink: %s\x1b[0m\n", finding.TargetURL, sinkName)
 	case models.ConfidenceBlockedByCSP:
-		fmt.Fprintf(os.Stdout, "\x1b[35;1m[BLOCKED-CSP]\x1b[0m %s (Context: %s)\n", finding.TargetURL, finding.Context)
+		fmt.Fprintf(out, "\x1b[35;1m[BLOCKED-CSP]\x1b[0m %s (Context: %s)\n", finding.TargetURL, finding.Context)
 	case models.ConfidencePotential:
 		if e.Config.Confirm {
 			return
 		}
-		fmt.Fprintf(os.Stdout, "\x1b[36;1m[POTENTIAL]\x1b[0m %s (Context: %s)\n", finding.TargetURL, finding.Context)
+		fmt.Fprintf(out, "\x1b[36;1m[POTENTIAL]\x1b[0m %s (Context: %s)\n", finding.TargetURL, finding.Context)
 	default:
-		fmt.Fprintf(os.Stdout, "\x1b[31;1m[X]\x1b[0m \x1b[36mNot Vulnerable:\x1b[0m \x1b[31m%s\x1b[0m\n", finding.TargetURL)
+		fmt.Fprintf(out, "\x1b[31;1m[X]\x1b[0m \x1b[36mNot Vulnerable:\x1b[0m \x1b[31m%s\x1b[0m\n", finding.TargetURL)
 	}
 }

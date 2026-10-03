@@ -3,7 +3,7 @@
 # 💀 XSSReaper
 ### *The Next-Generation, High-Concurrency XSS Discovery & Headless Verification Weapon*
 
-[![Go Version](https://img.shields.io/badge/Go-1.26+-00ADD8?style=for-the-badge&logo=go)](https://golang.org)
+[![Go Version](https://img.shields.io/badge/Go-1.22+-00ADD8?style=for-the-badge&logo=go)](https://golang.org)
 [![Headless Verification](https://img.shields.io/badge/Chromedp-Headless%20Verified-4285F4?style=for-the-badge&logo=googlechrome)](https://github.com/chromedp/chromedp)
 [![False Positives](https://img.shields.io/badge/False%20Positives-~0%25-00C853?style=for-the-badge)](https://github.com/youwannahackme/XSSReaper)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
@@ -139,7 +139,7 @@ XSSReaper embeds over **2,700+ polyglot and syntax-tailored XSS payloads** clean
 
 ## 🚀 Installation
 
-Ensure you have **Go (v1.26+)** installed along with **Google Chrome** or **Microsoft Edge** (required for Tier 2/3 headless verification).
+Ensure you have **Go (v1.22+)** installed along with **Google Chrome** or **Microsoft Edge** (required for Tier 2/3 headless verification).
 
 ### Quick Install (Any OS)
 ```bash
