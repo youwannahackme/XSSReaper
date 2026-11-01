@@ -5,6 +5,7 @@ import (
 	"context"
 	"flag"
 	"fmt"
+	"io"
 	"log/slog"
 	"os"
 	"os/signal"
@@ -126,6 +127,12 @@ func main() {
 	if urlFlag == "" && listFile == "" && flag.NArg() > 0 {
 		urlFlag = flag.Arg(0)
 	}
+	if urlFlag == "" && listFile == "" {
+		stat, _ := os.Stdin.Stat()
+		if (stat.Mode() & os.ModeCharDevice) == 0 {
+			listFile = "-"
+		}
+	}
 
 	// Setup structured logging
 	logger := slog.New(slog.NewTextHandler(os.Stderr, &slog.HandlerOptions{Level: slog.LevelInfo}))
@@ -161,10 +168,15 @@ func main() {
 		}
 	}
 	if listFile != "" {
-		f, err := os.Open(listFile)
-		if err != nil {
-			slog.Error("Failed to open URL list file", slog.String("file", listFile), slog.Any("error", err))
-			os.Exit(1)
+		var f io.Reader = os.Stdin
+		if listFile != "-" {
+			file, err := os.Open(listFile)
+			if err != nil {
+				slog.Error("Failed to open URL list file", slog.String("file", listFile), slog.Any("error", err))
+				os.Exit(1)
+			}
+			defer file.Close()
+			f = file
 		}
 		scanner := bufio.NewScanner(f)
 		for scanner.Scan() {
@@ -179,7 +191,6 @@ func main() {
 			slog.Error("Error reading URL list file", slog.String("file", listFile), slog.Any("error", err))
 			os.Exit(1)
 		}
-		f.Close()
 	}
 
 	if len(targetURLs) == 0 {
@@ -209,7 +220,6 @@ func main() {
 			slog.Error("Error reading payload list file", slog.String("file", payloadFile), slog.Any("error", err))
 			os.Exit(1)
 		}
-		f.Close()
 	}
 
 	cfg := scanner.Config{
