@@ -103,7 +103,7 @@ func verifyInBrowser(ctx context.Context, targetURL string, nonce string) (bool,
 	chromeCtx, cancelChrome := chromedp.NewContext(allocCtx)
 	defer cancelChrome()
 
-	navCtx, cancelNav := context.WithTimeout(chromeCtx, 12*time.Second)
+	navCtx, cancelNav := context.WithTimeout(chromeCtx, 8*time.Second)
 	defer cancelNav()
 
 	var dialogConfirmed bool

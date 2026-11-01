@@ -63,6 +63,7 @@ func printProfessionalHelp() {
 	fmt.Fprintln(os.Stderr, "  -c <int>                 Per-host adaptive concurrency limit (default: 25)")
 	fmt.Fprintln(os.Stderr, "  -timeout <duration>      Per-request HTTP timeout duration (default: 10s)")
 	fmt.Fprintln(os.Stderr, "  -H <header>              Custom HTTP header, repeatable (e.g., -H \"Authorization: Bearer x\")")
+	fmt.Fprintln(os.Stderr, "  -proxy <url>             HTTP/HTTPS/SOCKS5 proxy URL (e.g., http://127.0.0.1:8080)")
 	fmt.Fprintln(os.Stderr, "")
 	fmt.Fprintln(os.Stderr, "OUTPUT & REPORTING:")
 	fmt.Fprintln(os.Stderr, "  -o <file>                Save results to an output file")
@@ -79,6 +80,7 @@ func main() {
 	var (
 		urlFlag         string
 		listFile        string
+		jsonFlag        bool
 		payloadFile     string
 		concurrencyFlag int
 		timeoutFlag     time.Duration
@@ -91,24 +93,39 @@ func main() {
 		outFile         string
 		formatFlag      string
 		onlyConfirmed   bool
+		proxyFlag       string
 	)
 
 	flag.StringVar(&urlFlag, "u", "", "Single target URL")
+	flag.StringVar(&urlFlag, "url", "", "Single target URL")
 	flag.StringVar(&listFile, "l", "", "File of target URLs, one per line")
+	flag.StringVar(&listFile, "list", "", "File of target URLs, one per line")
 	flag.StringVar(&payloadFile, "p", "", "Custom payload list file (one per line)")
 	flag.IntVar(&concurrencyFlag, "c", 25, "Per-host throttled concurrency limit")
 	flag.DurationVar(&timeoutFlag, "timeout", 10*time.Second, "Per-request HTTP timeout")
 	flag.Var(&headersFlag, "H", "Repeatable custom HTTP header (e.g., -H 'Authorization: Bearer x')")
+	flag.StringVar(&proxyFlag, "proxy", "", "HTTP/HTTPS/SOCKS5 proxy URL")
+	flag.StringVar(&proxyFlag, "x", "", "HTTP/HTTPS/SOCKS5 proxy URL (shorthand)")
 	flag.BoolVar(&confirmFlag, "confirm", false, "Enable Tier 3 headless confirmation (chromedp)")
 	flag.BoolVar(&domFlag, "dom", false, "Enable Tier 2 DOM-sink instrumentation (requires -confirm)")
 	flag.BoolVar(&allPayloadsFlag, "all-payloads", false, "Test all embedded/custom wordlist payloads in Tier 3 (brute-force mode)")
 	flag.StringVar(&oobFlag, "oob", "", "Optional out-of-band callback base URL")
 	flag.BoolVar(&respectCSPFlag, "respect-csp", false, "Downgrade findings blocked by target Content-Security-Policy")
 	flag.StringVar(&outFile, "o", "", "Output file path")
+	flag.StringVar(&outFile, "output", "", "Output file path")
 	flag.StringVar(&formatFlag, "format", "table", "Output format: table or json")
+	flag.BoolVar(&jsonFlag, "j", false, "Output format as JSON (shorthand)")
+	flag.BoolVar(&jsonFlag, "json", false, "Output format as JSON")
 	flag.BoolVar(&onlyConfirmed, "only-confirmed", false, "Suppress Potential/DOM-Sink results")
 
 	flag.Parse()
+
+	if jsonFlag {
+		formatFlag = "json"
+	}
+	if urlFlag == "" && listFile == "" && flag.NArg() > 0 {
+		urlFlag = flag.Arg(0)
+	}
 
 	// Setup structured logging
 	logger := slog.New(slog.NewTextHandler(os.Stderr, &slog.HandlerOptions{Level: slog.LevelInfo}))
@@ -207,6 +224,7 @@ func main() {
 		OnlyConfirmed: onlyConfirmed,
 		Payloads:      payloadsList,
 		Format:        formatFlag,
+		Proxy:         proxyFlag,
 	}
 
 	engine := scanner.NewEngine(cfg)

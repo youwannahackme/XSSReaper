@@ -95,13 +95,32 @@ func FindExecPath() string {
 	return ""
 }
 
+var globalProxy string
+
+// SetGlobalProxy sets the proxy server URL for browser allocation.
+func SetGlobalProxy(p string) {
+	globalProxy = p
+}
+
 // AllocatorOptions returns standard chromedp allocator options configured with headless flags and the discovered browser path.
 func AllocatorOptions() []chromedp.ExecAllocatorOption {
 	opts := append(chromedp.DefaultExecAllocatorOptions[:],
 		chromedp.Flag("headless", true),
 		chromedp.Flag("disable-gpu", true),
 		chromedp.Flag("no-sandbox", true),
+		chromedp.Flag("ignore-certificate-errors", true),
 	)
+	proxyURL := globalProxy
+	if proxyURL == "" {
+		if p := os.Getenv("HTTP_PROXY"); p != "" {
+			proxyURL = p
+		} else if p := os.Getenv("http_proxy"); p != "" {
+			proxyURL = p
+		}
+	}
+	if proxyURL != "" {
+		opts = append(opts, chromedp.ProxyServer(proxyURL))
+	}
 	if path := FindExecPath(); path != "" {
 		opts = append(opts, chromedp.ExecPath(path))
 	}

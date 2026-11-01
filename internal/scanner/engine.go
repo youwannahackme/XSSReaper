@@ -9,6 +9,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/youwannahackme/XSSReaper/internal/browser"
 	"github.com/youwannahackme/XSSReaper/internal/concurrency"
 	"github.com/youwannahackme/XSSReaper/internal/models"
 	"github.com/youwannahackme/XSSReaper/internal/tier1"
@@ -29,6 +30,7 @@ type Config struct {
 	AllPayloads   bool
 	Payloads      []string
 	Format        string
+	Proxy         string
 }
 
 // Engine orchestrates the Tier 1 -> Tier 2 -> Tier 3 scanning pipeline across targets.
@@ -40,8 +42,11 @@ type Engine struct {
 
 // NewEngine creates a new scanner orchestration engine.
 func NewEngine(cfg Config) *Engine {
+	if cfg.Proxy != "" {
+		browser.SetGlobalProxy(cfg.Proxy)
+	}
 	pool := concurrency.NewPool(cfg.Concurrency)
-	analyzer := tier1.NewAnalyzer(cfg.Timeout, cfg.Headers)
+	analyzer := tier1.NewAnalyzerWithProxy(cfg.Timeout, cfg.Headers, cfg.Proxy)
 	analyzer.OnRequestOutcome = func(rawURL string, statusCode int, err error) {
 		pool.GetThrottler(rawURL).Observe(statusCode, err)
 	}

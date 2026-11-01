@@ -2,6 +2,7 @@ package tier1
 
 import (
 	"context"
+	"crypto/tls"
 	"io"
 	"net/http"
 	"net/url"
@@ -21,9 +22,28 @@ type Analyzer struct {
 
 // NewAnalyzer creates a new Tier 1 analyzer.
 func NewAnalyzer(timeout time.Duration, headers []string) *Analyzer {
+	return NewAnalyzerWithProxy(timeout, headers, "")
+}
+
+// NewAnalyzerWithProxy creates a new Tier 1 analyzer with proxy and TLS bypass support.
+func NewAnalyzerWithProxy(timeout time.Duration, headers []string, proxyURL string) *Analyzer {
+	proxyFunc := http.ProxyFromEnvironment
+	if proxyURL != "" {
+		if u, err := url.Parse(proxyURL); err == nil {
+			proxyFunc = http.ProxyURL(u)
+		}
+	}
+	tr := &http.Transport{
+		Proxy:               proxyFunc,
+		TLSClientConfig:     &tls.Config{InsecureSkipVerify: true},
+		MaxIdleConns:        100,
+		MaxIdleConnsPerHost: 20,
+		IdleConnTimeout:     30 * time.Second,
+	}
 	return &Analyzer{
 		Client: &http.Client{
-			Timeout: timeout,
+			Transport: tr,
+			Timeout:   timeout,
 		},
 		Headers: headers,
 	}

@@ -30,10 +30,18 @@ func InstrumentDOM(ctx context.Context, targetURL string, canary string) ([]DOMS
 	allocCtx, cancelAlloc := chromedp.NewExecAllocator(ctx, opts...)
 	defer cancelAlloc()
 
-	chromeCtx, cancelChrome := chromedp.NewContext(allocCtx)
+chromeCtx, cancelChrome := chromedp.NewContext(allocCtx)
 	defer cancelChrome()
 
-	navCtx, cancelNav := context.WithTimeout(chromeCtx, 12*time.Second)
+	chromedp.ListenTarget(chromeCtx, func(ev interface{}) {
+		if _, ok := ev.(*page.EventJavascriptDialogOpening); ok {
+			go func() {
+				_ = chromedp.Run(chromeCtx, page.HandleJavaScriptDialog(true))
+			}()
+		}
+	})
+
+	navCtx, cancelNav := context.WithTimeout(chromeCtx, 8*time.Second)
 	defer cancelNav()
 
 	hookScript := buildSinkHookScript(canary)
@@ -86,6 +94,13 @@ func PromoteIfDOMSink(ctx context.Context, finding *models.Finding, canary strin
 func buildSinkHookScript(canary string) string {
 	return fmt.Sprintf(`
 		(function() {
+			// Sanitize modal dialogs before DOM loads
+			try { window.alert = function(){ return true; }; } catch(e){}
+			try { window.confirm = function(){ return true; }; } catch(e){}
+			try { window.prompt = function(){ return ""; }; } catch(e){}
+			try { window.print = function(){ return true; }; } catch(e){}
+			try { window.open = function(){ return null; }; } catch(e){}
+
 			window.__dom_sinks_hit = [];
 			const canary = %q;
 			function checkSink(sink, val) {
